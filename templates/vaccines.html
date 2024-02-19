@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% block title %}Vaccines{% endblock %} {% block
+content %}
+<section class="vaccines-section">
+  <div class="vaccine-card-container">
+    {% for vaccine in vaccines %}
+    <a href="/vaccines/{{vaccine['slug']}}">
+      <div class="vaccine-card">
+        <div class="vaccine-image-container">
+          <img src="../static/images/vaccines/{{vaccine['image']}}" alt="" />
+          <div class="icon-text-container">
+            <svg class="icon">
+              <use href="../static/sprite.svg#map" />
+            </svg>
+            <p>{{vaccine['location']}}</p>
+          </div>
+        </div>
+        <div class="flex-row">
+          <div class="vaccine-details-header">
+            <div class="icon-text-container">
+              <p>{{vaccine['rating']}}</p>
+              <svg class="icon">
+                <use href="../static/sprite.svg#star" />
+              </svg>
+            </div>
+
+            <div class="icon-text-container">
+              <svg class="icon">
+                <use href="../static/sprite.svg#clock" />
+              </svg>
+              <p>{{vaccine['timing']}}</p>
+            </div>
+          </div>
+          <p class="vaccine-name">{{vaccine['name']}}</p>
+          <p class="small-description">{{vaccine['small_description']}}</p>
+
+          <div class="icon-text-container">
+            <svg class="icon">
+              <use href="../static/sprite.svg#user" />
+            </svg>
+            <p>₹ {{vaccine['price_per_person']}}</p>
+          </div>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

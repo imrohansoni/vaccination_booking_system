@@ -1,0 +1,54 @@
+{% extends 'base.html' %} {% block title %}Appointments{% endblock %} {% block
+content %}
+<section class="appointments-section">
+  <div class="vaccine-card-container">
+    {% if appointments.__len__() < 1 %}
+    <h1>No Appointments found</h1>
+    {% else %} {% for appointment in appointments %}
+    <div class="vaccine-card">
+      <div class="vaccine-image-container">
+        <img src="../static/images/vaccines/{{appointment['image']}}" alt="" />
+        <div class="icon-text-container">
+          <svg class="icon">
+            <use href="../static/sprite.svg#map" />
+          </svg>
+          <p>{{appointment['location']}}</p>
+        </div>
+      </div>
+      <div class="flex-row">
+        <div
+          class="appointment-status appointment-{{appointment['appointment_status']}}"
+        >
+          appointment {{appointment['appointment_status']}}
+        </div>
+        <div class="vaccine-details-header">
+          <div class="icon-text-container">
+            <svg class="icon">
+              <use href="../static/sprite.svg#clock" />
+            </svg>
+            <p>{{appointment['timing']}}</p>
+          </div>
+        </div>
+
+        <p class="vaccine-name">{{appointment['name']}}</p>
+
+        <div>
+          <p class="transaction_id_text">TRANSACTION ID</p>
+          <p class="transaction_id">{{appointment["transaction_id"]}}</p>
+        </div>
+
+        <p>₹ {{appointment['total_price']}}</p>
+        <p class="appointment-date">Booked on {{appointment["created_at"]}}</p>
+        {% if appointment['appointment_status'] == 'confirmed' %}
+        <button class="button">
+          <a href="/appointments/{{appointment['id']}}/cancel"
+            >cancel appointment</a
+          >
+        </button>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %} {% endif %}
+  </div>
+</section>
+{% endblock %}

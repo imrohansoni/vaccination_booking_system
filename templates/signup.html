@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="../static/favicon.ico" />
+    <link rel="stylesheet" href="../static/stylesheet/global.css" />
+    <link rel="stylesheet" href="../static/stylesheet/styles.css" />
+    <title>Signup</title>
+  </head>
+  <body>
+    <section class="form-section">
+      <div class="form-container">
+        <a href="/">
+          <div class="logo-container">
+            <div class="logo-image-container">
+              <img
+                src="../static/images/logo.png"
+                alt="tourism logo"
+                class="logo"
+              />
+            </div>
+            <div class="logo-text-container">
+              <p>vaccination booking</p>
+              <p>system</p>
+            </div>
+          </div>
+        </a>
+        <form action="/signup" method="post" class="form">
+          <p class="form-heading">Signup with your email</p>
+          <fieldset>
+            <label class="input-label" for="firstname">firstname</label>
+            <input
+              class="input-field"
+              type="text"
+              id="firstname"
+              value="{{ firstname }}"
+              name="firstname"
+            />
+            {% if errors and errors.get("firstname") %}
+            <div class="error-container">
+              <svg class="icon">
+                <use href="../static/sprite.svg#warning-circle" />
+              </svg>
+              <p class="error-message">{{ errors["firstname"] }}</p>
+            </div>
+            {% endif %}
+          </fieldset>
+          <fieldset>
+            <label class="input-label" for="lastname">lastname</label>
+            <input
+              class="input-field"
+              type="text"
+              id="lastname"
+              value="{{ lastname }}"
+              name="lastname"
+            />
+            {% if errors and errors.get("lastname") %}
+            <div class="error-container">
+              <svg class="icon">
+                <use href="../static/sprite.svg#warning-circle" />
+              </svg>
+              <p class="error-message">{{ errors["lastname"] }}</p>
+            </div>
+            {% endif %}
+          </fieldset>
+          <fieldset>
+            <label class="input-label" for="mobile-number">mobile number</label>
+            <input
+              class="input-field"
+              type="text"
+              id="mobile-number"
+              value="{{mobile_number}}"
+              name="mobile_number"
+            />
+            {% if errors and errors.get("mobile_number") %}
+            <div class="error-container">
+              <svg class="icon">
+                <use href="../static/sprite.svg#warning-circle" />
+              </svg>
+              <p class="error-message">{{ errors["mobile_number"] }}</p>
+            </div>
+            {% endif %}
+          </fieldset>
+          <fieldset>
+            <label class="input-label" for="password">password</label>
+            <input
+              class="input-field"
+              type="password"
+              name="password"
+              value="{{password}}"
+              id="password"
+            />
+            {% if errors and errors.get("password") %}
+            <div class="error-container">
+              <svg class="icon">
+                <use href="../static/sprite.svg#warning-circle" />
+              </svg>
+              <p class="error-message">{{ errors["password"] }}</p>
+            </div>
+            {% endif %}
+          </fieldset>
+
+          <button type="submit">signup</button>
+        </form>
+        <p>Already have an account? <a href="/login">login</a></p>
+      </div>
+      <div class="image-container">
+        <img src="../static/images/vaccination.jpg" alt="" />
+      </div>
+    </section>
+  </body>
+</html>

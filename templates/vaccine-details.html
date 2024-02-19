@@ -1,0 +1,117 @@
+{% extends 'base.html' %} {% block title %}{{vaccine['name']}}{% endblock %} {%
+block content %}
+<section class="vaccines-details-section">
+  <div class="vaccine-image-container">
+    <img src="../static/images/vaccines/{{vaccine['image']}}" alt="" />
+    <div class="icon-text-container">
+      <svg class="icon">
+        <use href="../static/sprite.svg#map" />
+      </svg>
+      <p>{{vaccine['location']}}</p>
+    </div>
+  </div>
+  <div class="vaccine-details-container">
+    <div class="vaccine-details-header">
+      <div class="icon-text-container">
+        <svg class="icon">
+          <use href="../static/sprite.svg#clock" />
+        </svg>
+        <p>{{vaccine['timing']}}</p>
+      </div>
+      <div class="icon-text-container">
+        <p>{{vaccine['rating']}}</p>
+        <svg class="icon">
+          <use href="../static/sprite.svg#star" />
+        </svg>
+      </div>
+    </div>
+    <p class="vaccine-name">{{vaccine['name']}}</p>
+    <p class="small-description">{{vaccine['small_description']}}</p>
+
+    <p class="small-description">{{vaccine['description']}}</p>
+
+    <div class="icon-text-container">
+      <svg class="icon">
+        <use href="../static/sprite.svg#user" />
+      </svg>
+      <p>₹ {{vaccine['price_per_person']}}</p>
+    </div>
+
+    {% if 'user_id' in session %}
+    <form action="/appointments" method="post" class="appointment-form">
+      <h2>Enter the patent's details</h2>
+
+      <input
+        class="input-field"
+        type="text"
+        id="patent_name"
+        value="{{ patent_name }}"
+        name="patent_name"
+        placeholder="patent name"
+      />
+      {% if errors and errors.get("patent_name") %}
+      <div class="error-container">
+        <svg class="icon">
+          <use href="../static/sprite.svg#warning-circle" />
+        </svg>
+        <p class="error-message">{{ errors["patent_name"] }}</p>
+      </div>
+      {% endif %}
+
+      <input
+        class="input-field"
+        type="number"
+        id="patent_age"
+        value="{{ patent_age }}"
+        name="patent_age"
+        placeholder="patent age"
+      />
+      {% if errors and errors.get("patent_age") %}
+      <div class="error-container">
+        <svg class="icon">
+          <use href="../static/sprite.svg#warning-circle" />
+        </svg>
+        <p class="error-message">{{ errors["patent_age"] }}</p>
+      </div>
+      {% endif %}
+      <div class="patent-gender">
+        <input type="radio" name="gender" value="male" id="male" />
+        <label for="male">male</label>
+        <input type="radio" name="gender" value="female" id="female" />
+        <label for="female">female</label>
+        <input type="radio" name="gender" value="other" id="other" />
+        <label for="other">other</label>
+      </div>
+
+      {% if errors and errors.get("gender") %}
+      <div class="error-container">
+        <svg class="icon">
+          <use href="../static/sprite.svg#warning-circle" />
+        </svg>
+        <p class="error-message">{{ errors["gender"] }}</p>
+      </div>
+      {% endif %}
+
+      <input type="text" name="user_id" value="{{user['id']}}" class="hidden" />
+      <input
+        type="text"
+        name="vaccine_id"
+        value="{{vaccine['id']}}"
+        class="hidden"
+      />
+      <button class="button" id="bookNowButton">
+        PAY {{vaccine['price_per_person']}} AND BOOK NOW
+      </button>
+    </form>
+    {% else %}
+    <a href="/login">
+      <button class="button" id="bookNowButton">
+        PAY {{vaccine['price_per_person']}} AND BOOK NOW
+      </button>
+    </a>
+
+    {% endif %}
+  </div>
+</section>
+
+{% endblock %}

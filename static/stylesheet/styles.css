@@ -1,0 +1,182 @@
+.appointment-date {
+    font-size: 14px;
+    color: grey;
+}
+
+.appointments-section .vaccine-card {
+    width: 400px;
+}
+
+.appointments-section .vaccine-name {
+    font-size: 16px;
+}
+
+.appointments-section .vaccine-image-container {
+    height: 300px;
+}
+
+.appointment-status {
+    padding: 8px;
+    width: fit-content;
+    font-size: 14px;
+    text-align: center;
+}
+
+.appointment-status.appointment-confirmed {
+    background-color: rgb(219, 255, 219);
+    border: 2px solid rgb(56, 255, 56);
+    color: green;
+}
+
+.appointment-status.appointment-cancelled {
+    background-color: rgb(255, 241, 245);
+    border: 2px solid rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
+}
+
+.transaction_id_text {
+    font-size: 14px;
+}
+
+.appointment-confirmation-section {
+    display: flex;
+    gap: 24px;
+    padding: 48px;
+}
+
+.confirmation-details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.confirmation-text-container {
+    width: 400px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: rgb(219, 255, 219);
+    border: 2px solid rgb(56, 255, 56);
+    color: green;
+    padding: 24px;
+}
+
+.confirmation-text-container h1 {
+    font-size: 24px;
+}
+
+.transaction_id {
+    color: grey;
+}
+
+.appointment-confirmation-section .vaccine-image-container {
+    width: 40%;
+    height: 500px;
+}
+
+.vaccines-details-section .vaccine-image-container {
+    width: 50%;
+    height: 500px;
+}
+
+.vaccines-details-section {
+    display: flex;
+    gap: 24px;
+    padding: 48px;
+}
+
+.vaccine-details-container {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 24px;
+}
+
+.person-counter {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.appointment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* .vaccine-appointment-form input {
+    display: none;
+} */
+
+.vaccine-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vaccine-name {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.vaccine-details-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon-text-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.vaccine-price {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.small-description {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #474747;
+}
+
+
+.vaccine-card-container {
+    padding: 24px;
+    display: flex;
+    gap: 36px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.vaccine-card {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.vaccine-image-container .icon-text-container {
+    background-color: black;
+    color: white;
+    padding: 6px;
+    position: absolute;
+    z-index: 10;
+    left: 12px;
+    bottom: 12px;
+}
+
+.vaccine-image-container {
+    width: 100%;
+    height: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}

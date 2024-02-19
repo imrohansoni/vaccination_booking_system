@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% block title %}vaccines{% endblock %} {% block
+content %}
+<section class="appointment-confirmation-section">
+  <div class="vaccine-image-container">
+    <img src="../static/images/vaccines/{{details['image']}}" alt="" />
+
+    <div class="icon-text-container">
+      <svg class="icon">
+        <use href="../static/sprite.svg#map" />
+      </svg>
+      <p>{{details["location"]}}</p>
+    </div>
+  </div>
+
+  <div class="confirmation-details-container">
+    <div>
+      <p>TRANSACTION ID</p>
+      <p class="transaction_id">{{details["transaction_id"]}}</p>
+    </div>
+    <div class="confirmation-text-container">
+      <img src="../static/images/yes.png" alt="" width="50" height="50" />
+      <h1>appointment confirmed</h1>
+    </div>
+    <div class="vaccine-details-header">
+      <div class="icon-text-container">
+        <svg class="icon">
+          <use href="../static/sprite.svg#clock" />
+        </svg>
+        <p>{{details["timing"]}}</p>
+      </div>
+      <div class="icon-text-container">
+        <p>{{details["rating"]}}</p>
+        <svg class="icon">
+          <use href="../static/sprite.svg#star" />
+        </svg>
+      </div>
+    </div>
+    <p class="vaccine-name">{{details["name"]}}</p>
+
+    <h1 class="total_price">Total price ₹ {{details["price_per_person"]}}</h1>
+
+    <button class="button">
+      <a href="/appointments">Go to appointments</a>
+    </button>
+  </div>
+</section>
+
+{% endblock %}

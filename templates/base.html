@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="../static/favicon.ico" />
+    <link rel="stylesheet" href="../static/stylesheet/global.css" />
+    <link rel="stylesheet" href="../static/stylesheet/styles.css" />
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    <nav class="nav">
+      <a href="/">
+        <div class="logo-container">
+          <div class="logo-image-container">
+            <img
+              src="../static/images/logo.png"
+              alt="tourism logo"
+              class="logo"
+            />
+          </div>
+          <div class="logo-text-container">
+            <p>vaccination booking</p>
+            <p>system</p>
+          </div>
+        </div>
+      </a>
+      <ul>
+        <li>
+          <a href="/">home</a>
+        </li>
+        <li>
+          <a href="/vaccines">vaccines</a>
+        </li>
+        <li>
+          <a href="/appointments">appointments</a>
+        </li>
+        <li>
+          <a href="/about">about</a>
+        </li>
+        {% if user %}
+        <li>
+          <div class="account-link">
+            <svg class="icon">
+              <use href="../static/sprite.svg#user-circle" />
+            </svg>
+            <a href="/account"
+              >{{ user["firstname"] }} {{ user["lastname"] }}</a
+            >
+
+            <div class="logout-container">
+              <svg class="icon">
+                <use href="../static/sprite.svg#logout" />
+              </svg>
+              <a href="/logout">logout</a>
+            </div>
+          </div>
+        </li>
+        {% else %}
+        <li>
+          <button>
+            <a href="/login">login</a>
+          </button>
+        </li>
+        <li>
+          <button>
+            <a href="/signup">signup</a>
+          </button>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+    <main>{% block content %}{% endblock %}</main>
+    <footer class="footer">
+      <a href="/">
+        <div class="logo-container">
+          <div class="logo-image-container">
+            <img
+              src="../static/images/logo.png"
+              alt="tourism logo"
+              class="logo"
+            />
+          </div>
+          <div class="logo-text-container">
+            <p>vaccination booking</p>
+            <p>system</p>
+          </div>
+        </div>
+      </a>
+      <div class="social-section">
+        <ul class="social-media">
+          <li>
+            <a href="facebook.com">
+              <img src="../static/icon/facebook.png" alt="" class="icon" />
+            </a>
+          </li>
+          <li>
+            <a href="/instagram.com">
+              <img src="../static/icon/instagram.png" alt="" class="icon" />
+            </a>
+          </li>
+          <li>
+            <a href="/twitter.com">
+              <img src="../static/icon/twitter.png" alt="" class="icon" />
+            </a>
+          </li>
+          <li>
+            <a href="/youtube.com">
+              <img src="../static/icon/youtube.png" alt="" class="icon" />
+            </a>
+          </li>
+        </ul>
+        <p class="fotter-copyright">@2024 All right reserved</p>
+      </div>
+    </footer>
+  </body>
+</html>
