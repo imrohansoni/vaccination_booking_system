@@ -2,8 +2,10 @@ from routers.appointments import appointment_bp
 from routers.vaccines import vaccine_bp
 
 from utils.authentication import authenticate
+from controllers.feedback_controllers import create_feedback
+from controllers.center_controllers import render_centers
 from flask import Flask, redirect, render_template, send_from_directory, session, g
-from controllers.auth_controllers import signup, login
+from controllers.auth_controllers import signup, login, update_account
 from datetime import timedelta
 from dotenv import load_dotenv
 import os
@@ -23,13 +25,31 @@ app.register_blueprint(vaccine_bp, url_prefix="/vaccines")
 @app.get("/")
 @authenticate
 def render_home():
-    return render_template("home.html", user=g.get("user_data"))
+    return render_template("home.html", user=g.get("user_data"), active_link="home")
 
 
 @app.get("/about")
 @authenticate
 def render_about():
-    return render_template("about.html", user=g.get("user_data"))
+    return render_template("about.html", user=g.get("user_data"), active_link="about")
+
+
+@app.get("/centers")
+@authenticate
+def render_center():
+    return render_centers()
+
+
+@app.get("/feedback")
+@authenticate
+def render_feedback():
+    return render_template("feedback.html", user=g.get("user_data"), active_link="feedback")
+
+
+@app.post("/feedback")
+@authenticate
+def post_feedback():
+    return create_feedback()
 
 
 @app.get("/login")
@@ -56,6 +76,20 @@ def signup_route():
 @app.post("/login")
 def login_route():
     return login()
+
+
+@app.get("/account")
+@authenticate
+def render_account():
+    user = g.get("user_data")
+    if user is None:
+        return redirect("/login")
+    return render_template("account.html", **user, user=user)
+
+
+@app.post("/account")
+def update_account_route():
+    return update_account()
 
 
 @app.errorhandler(404)

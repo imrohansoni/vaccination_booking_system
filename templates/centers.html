@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block title %}centers{% endblock %} {% block
+    content %}
+    <section class="vaccines-section">
+      <div class="vaccine-card-container">
+        {% for center in centers %}
+          <div class="vaccine-card">
+            <div class="vaccine-image-container">
+              <img src="../static/images/vaccines/{{center['image']}}" alt="" />
+              <div class="icon-text-container">
+                <svg class="icon">
+                  <use href="../static/sprite.svg#map" />
+                </svg>
+                <p>{{center['location']}}</p>
+              </div>
+            </div>
+            <div class="flex-row">
+              <div class="vaccine-details-header">
+                <div class="icon-text-container">
+                  <p>{{center['rating']}}</p>
+                  <svg class="icon">
+                    <use href="../static/sprite.svg#star" />
+                  </svg>
+                </div>
+              </div>
+              <p class="vaccine-name">{{center['name']}}</p>
+              <a href="{{center['location_link']}}">
+                <div class="icon-text-container">
+                  <svg class="icon">
+                    <use href="../static/sprite.svg#map" />
+                  </svg>
+                  <p>location</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        
+        {% endfor %}
+      </div>
+    </section>
+    {% endblock %}
+    

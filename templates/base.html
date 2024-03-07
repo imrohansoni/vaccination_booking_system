@@ -26,19 +26,25 @@
         </div>
       </a>
       <ul>
-        <li>
+        <li {% if active_link == 'home' %}class="active"{% endif %}>
           <a href="/">home</a>
         </li>
-        <li>
+        <li {% if active_link == 'vaccines' %}class="active"{% endif %}>
           <a href="/vaccines">vaccines</a>
         </li>
-        <li>
+        <li {% if active_link == 'appointments' %}class="active"{% endif %}>
           <a href="/appointments">appointments</a>
         </li>
-        <li>
+        <li {% if active_link == 'centers' %}class="active"{% endif %}>
+          <a href="/centers">centers</a>
+        </li>
+        <li {% if active_link == 'about' %}class="active"{% endif %}>
           <a href="/about">about</a>
         </li>
         {% if user %}
+        <li {% if active_link == 'feedback' %}class="active"{% endif %}>
+          <a href="/feedback">feedback</a>
+        </li>
         <li>
           <div class="account-link">
             <svg class="icon">

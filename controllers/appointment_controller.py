@@ -53,7 +53,7 @@ def create_appointment():
     return render_template("/confirmation.html", details={
         **vaccine_details,
         "transaction_id": transaction_id
-    }, user=g.get("user_data"))
+    }, user=g.get("user_data"), active_link="appointments")
 
 
 @authenticate
@@ -86,7 +86,7 @@ def render_appointments():
             "id": appointment[8]
         })
 
-    return render_template("appointments.html", user=user, appointments=appointment_list)
+    return render_template("appointments.html", user=user, appointments=appointment_list, active_link="appointments")
 
 
 @authenticate

@@ -32,11 +32,14 @@ label {
     text-transform: capitalize;
 }
 
-.error-message {
-    color: red;
+.flex-row {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
 }
 
 .error-container {
+    color: red;
     display: flex;
     gap: 6px;
 }
@@ -45,16 +48,16 @@ label {
     width: 18px;
     height: 18px;
     fill: currentColor;
+    flex-shrink: 0;
 }
 
 .account-link {
     display: flex;
     align-items: center;
-    background-color: var(--primary-color);
-    color: white;
+    border-left: 2px solid #eee;
+    color: var(--primary-color);
     padding: 12px;
     gap: 8px;
-    border-radius: 24px;
 }
 
 
@@ -100,18 +103,19 @@ label {
 }
 
 .nav {
-    height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 24px;
     background-color: rgba(255, 255, 255);
-    color: black;
-    border-bottom: 2px solid #ddd;
+    color: #797979;
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.1);
 }
+
+
 
 
 .header-section-text {
@@ -125,7 +129,7 @@ label {
 }
 
 .header-section-text h1 {
-    font-size: 44px;
+    font-size: 48px;
     background-color: rgba(0, 0, 0, 0.4);
     color: white;
     padding: 12px;
@@ -144,11 +148,6 @@ label {
     align-items: center;
 }
 
-.flex-row {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
 
 .details-container {
     display: flex;
@@ -177,7 +176,22 @@ label {
     list-style: none;
     display: flex;
     gap: 24px;
+}
+
+.nav ul li {
+    display: flex;
     align-items: center;
+    justify-content: center;
+    /* border-bottom: 3px solid var(--primary-color); */
+}
+
+.nav ul li>a {
+    padding: 24px 4px;
+}
+
+.nav ul li.active {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
 }
 
 button {
@@ -275,7 +289,9 @@ section {
     gap: 8px;
 }
 
-
+.hidden {
+    display: none;
+}
 
 .about-section {
     padding: 36px;
@@ -325,4 +341,62 @@ section {
 
 .error-section h1 {
     font-size: 36px;
+}
+
+.feedback-section {
+    display: flex;
+    justify-content: center;
+    padding-top: 36px;
+}
+
+.feedback-section .form-container {
+    width: 70%;
+}
+
+.feedback-section fieldset {
+    width: 100%;
+}
+
+.feedback-section .input-field.feedback {
+    width: 100%;
+    height: 400px;
+    resize: none;
+}
+
+.feedback-section .form-heading {
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.feedback-confirmation-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding-top: 140px;
+    gap: 24px;
+}
+
+
+.feedback-confirmation-section img {
+    width: 200px;
+}
+
+.account-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+}
+
+.account-section .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.account-section .form-container .form-title {
+    display: flex;
+    gap: 12px;
+    align-items: center;
 }

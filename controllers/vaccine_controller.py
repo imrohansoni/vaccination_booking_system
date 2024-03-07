@@ -22,7 +22,7 @@ def render_vaccines():
             "slug": vaccine[7]
         })
     cursor.close()
-    return render_template("vaccines.html", user=g.get("user_data"), vaccines=vaccine_list)
+    return render_template("vaccines.html", user=g.get("user_data"), vaccines=vaccine_list, active_link="vaccines")
 
 
 @authenticate
@@ -43,4 +43,4 @@ def render_vaccine_details(vaccine_slug):
         "rating": vaccine[8],
         "slug": vaccine[9]
     })
-    return render_template("vaccine-details.html", user=g.get("user_data"), vaccine=vaccine_details)
+    return render_template("vaccine-details.html", user=g.get("user_data"), vaccine=vaccine_details, active_link="vaccines")

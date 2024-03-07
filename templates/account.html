@@ -1,0 +1,74 @@
+{% extends 'base.html' %} {% block title %}Account{% endblock %} {% block
+content %}
+<section class="account-section">
+  <div class="form-container">
+    <div class="form-title">
+      <img src="../static/icon/user.png" alt="" />
+      <h1>my account</h1>
+    </div>
+    <form action="/account" method="post" class="form">
+      <fieldset>
+        <label class="input-label" for="firstname">firstname</label>
+        <input
+          class="input-field"
+          type="text"
+          id="firstname"
+          value="{{ firstname }}"
+          name="firstname"
+        />
+        {% if errors and errors.get("firstname") %}
+        <div class="error-container">
+          <svg class="icon">
+            <use href="../static/sprite.svg#warning-circle" />
+          </svg>
+          <p class="error-message">{{ errors["firstname"] }}</p>
+        </div>
+        {% endif %}
+      </fieldset>
+      <fieldset>
+        <label class="input-label" for="lastname">lastname</label>
+        <input
+          class="input-field"
+          type="text"
+          id="lastname"
+          value="{{ lastname }}"
+          name="lastname"
+        />
+        {% if errors and errors.get("lastname") %}
+        <div class="error-container">
+          <svg class="icon">
+            <use href="../static/sprite.svg#warning-circle" />
+          </svg>
+          <p class="error-message">{{ errors["lastname"] }}</p>
+        </div>
+        {% endif %}
+      </fieldset>
+      <fieldset>
+        <label class="input-label" for="mobile-number">mobile number</label>
+        <input
+          class="input-field"
+          type="text"
+          id="mobile-number"
+          value="{{ mobile_number }}"
+          name="mobile_number"
+        />
+        {% if errors and errors.get("mobile_number") %}
+        <div class="error-container">
+          <svg class="icon">
+            <use href="../static/sprite.svg#warning-circle" />
+          </svg>
+          <p class="error-message">{{ errors["mobile_number"] }}</p>
+        </div>
+        {% endif %}
+      </fieldset>
+      <input
+        type="text"
+        name="user_id"
+        value="{{ user['id'] }}"
+        class="hidden"
+      />
+      <button type="submit">update</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

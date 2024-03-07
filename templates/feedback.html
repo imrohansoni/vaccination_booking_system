@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block title %}centers{% endblock %} {% block
+    content %}
+  <section class="feedback-section">
+    <div class="form-container">
+        <form action="/feedback" method="post" class="form">
+          <h1 class="form-heading">Feedback</h1>
+          <fieldset>
+            <textarea
+              class="input-field feedback"
+              type="text"
+              value="{{feedback}}"
+              placeholder="enter your feedback here..."
+              name="feedback"
+            ></textarea>
+            {% if errors and errors.get("feedback") %}
+            <div class="error-container">
+              <svg class="icon">
+                <use href="../static/sprite.svg#warning-circle" />
+              </svg>
+              <p class="error-message">{{ errors["feedback"] }}</p>
+            </div>
+            {% endif %}
+          </fieldset>
+          <input type="text" name="user_id" value="{{user['id']}}" class="hidden" />
+          <button type="submit">submit feedback</button>
+        </form>
+      </div>
+  </section>
+    {% endblock %}
+    
